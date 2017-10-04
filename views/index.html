@@ -1,0 +1,21 @@
+<!-- Log in page. -->
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <div>
+      <h1 class="text-center">Everyday is Caturday</h1>
+      <form action="/users/login" method="post">
+        <input placeholder="username" name="user[email]" type="text"/>
+        <input placeholder="password" name="user[password]" type="password"/>
+        <input type="submit" value="Login">
+      </form>
+
+      <div class="text-center">
+        <a href="/users/signup"><small>Sign Up</small></a>
+      </div>
+    </div>
+  </body>
+</html>
