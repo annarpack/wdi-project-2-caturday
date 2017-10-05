@@ -5,17 +5,19 @@ const passport = require('passport');
 const auth = require('../services/auth');
 
 // Sign up page.
-router.get('/signup', (req, res) => {
+router.get('/signup',
+  User.getCatFace,
+  (req, res) => {
   res.render('users/signup');
 });
 
 //login
-router.get('/login', (req, res) => {
+router.get('/login', User.getCatFace, (req, res) => {
   res.render('users/login');
 });
 
 // Post to create new user (params are username/password).
-router.post('/',
+router.post('/', User.getCatFace,
   passport.authenticate(
     'local-signup', {
         failureRedirect: '/users/signup',
@@ -25,7 +27,7 @@ router.post('/',
 );
 
 // Post to login (params are username/password).
-router.post('/login',
+router.post('/login', User.getCatFace,
   passport.authenticate(
     'local-login', {
         failureRedirect: '/users/signup',

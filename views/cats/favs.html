@@ -15,7 +15,6 @@
     </nav>
     <a href="/logout" class="logout">logout</a>
     <h1>Everyday is Caturday</h1>
-    <div id="cat-face"></div>
     <h2>Favorites</h2>
 
   {{#favs}}
@@ -27,11 +26,9 @@
     <button id="edit-fav" data-id={{id}}>Edit Favorite</button>
 </div>
   {{/favs}}
-<!--
+
     <div class="text-center" id="footer">
-      <button>Save to Favorites</button>
-      <button>Add Cute Vote</button>
-      <button>See Next Cat</button>
-    </div> -->
+      <div id="cat-face">{{face}}</div>
+    </div>
      </body>
 </html>

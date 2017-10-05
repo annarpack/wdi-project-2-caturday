@@ -20,6 +20,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cat-ascii-faces": "^2.0.0",
+    "cat-facts": "^1.0.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "env": "0.0.2",

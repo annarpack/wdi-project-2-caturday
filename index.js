@@ -7,7 +7,8 @@ const express = require('express'),
       app = express(),
       PORT = process.env.PORT || 8080,
       cookieParser = require('cookie-parser'),
-      session = require('express-session');
+      session = require('express-session'),
+      catFacts = require('cat-facts');
 
 
 // body-parser setup.
@@ -37,14 +38,16 @@ app.use(auth.passportInstance);
 app.use(auth.passportSession);
 app.use(cookieParser());
 
+const getCatFact = (req, res, next) => {   
+  let randomFact = catFacts.random();
+  res.locals.fact = randomFact;
+  next();
+}
 // root route.
-app.get('/', (req, res) => {
+app.get('/', getCatFact, (req, res) => {
   res.render('index');
 })
 
-app.get('/show', (req, res) => {
-  res.render('show');
-});
 
 // Hook up controllers yourself.
 app.use('/users', require('./controllers/users-controller'));

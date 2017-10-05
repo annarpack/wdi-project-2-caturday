@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const db = require('../db/config');
+const cats = require('cat-ascii-faces');
 
 const User = {};
 
@@ -24,5 +25,11 @@ User.findByEmailMiddleware = (req, res, next) => {
       next();
     }).catch(err => console.log('ERROR:', err));
 };
+
+User.getCatFace = (req, res, next) => {   
+  const face = cats();
+  res.locals.face = face;
+  next();
+}
 
 module.exports = User;

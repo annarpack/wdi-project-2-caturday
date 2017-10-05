@@ -4,6 +4,7 @@ const Cats = require('../models/cats');
 // get controller homepage
 router.get('/',
  Cats.fetchNew,
+  Cats.getCatFace,
  // Cats.getCatFace,
  (req, res) => {
     res.render('cats/index',{
@@ -14,14 +15,17 @@ router.get('/',
 // get obj by id
 router.get('/favs',
  Cats.findAll,
+ Cats.getCatFace,
 (req, res) => {
     res.render('cats/favs', {
-            favs: res.locals.allCatsData
+            favs: res.locals.allCatsData,
+            face: res.locals.face
       });
 });
 // get obj by id
 router.get('/favs/edit/:id',
  Cats.findById,
+  Cats.getCatFace,
 (req, res) => {
     res.render('cats/edit', {
       cat: res.locals.catData });
