@@ -9,12 +9,17 @@ router.get('/signup', (req, res) => {
   res.render('users/signup');
 });
 
+//login
+router.get('/login', (req, res) => {
+  res.render('users/login');
+});
+
 // Post to create new user (params are username/password).
 router.post('/',
   passport.authenticate(
     'local-signup', {
         failureRedirect: '/users/signup',
-        successRedirect: '/show'
+        successRedirect: '/cats'
     }
   )
 );
@@ -24,7 +29,7 @@ router.post('/login',
   passport.authenticate(
     'local-login', {
         failureRedirect: '/users/signup',
-        successRedirect: '/show'
+        successRedirect: '/cats'
     }
 ));
 

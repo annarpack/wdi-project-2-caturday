@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../css/styles.css">
+    <script type="text/javascript" src="../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../js/script.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="../../../">Homepage</a>
+      <a href="../../../cats">New Cat Picture</a>
+      <a href="../../../cats/favs">Favorite Cats</a>
+      <a href="../../../users/signup">Signup</a>
+      <a href="../../../users/login">Login</a>
+    </nav>
+    <a href="/logout" class="logout">logout</a>
+    <h1>Everyday is Caturday</h1>
+    <h2>Edit Cat</h2>
+    <div class="show-image-box">
+      <div class="show-image">
+        <img src="{{cat.url}}" >
+      </div>
+    </div>
+
+    <div>
+      <form id="edit-cat-form" class="" action="../favs/edit/{{cat.id}}" method="put">
+        <label for="">Position</label>
+        <input id="edit-series-input" type="number" name="series" value={{cat.series}}>
+        <input type="hidden" id="edit-url-input" value="{{cat.url}}">
+        <input type="hidden" id="edit-id-input" value={{cat.id}}>
+        <input type="submit" name="Submit" >
+      </form>
+    </div>
+
+     </body>
+</html>

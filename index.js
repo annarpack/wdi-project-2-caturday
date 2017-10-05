@@ -48,5 +48,6 @@ app.get('/show', (req, res) => {
 
 // Hook up controllers yourself.
 app.use('/users', require('./controllers/users-controller'));
+app.use('/cats', require('./controllers/cats-controller'));
 
 app.listen(PORT, () => console.log('Server listening on port', PORT));

@@ -3,7 +3,7 @@ const pgp = require('pg-promise')();
 const connectionSettings = {
   host: 'localhost',
   port: 5432,
-  database: 'caturday',
+  database: 'caturday_db',
   user: 'annarpack'
 }
 

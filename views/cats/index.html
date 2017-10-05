@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/script.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="../../">Homepage</a>
+      <a href="../../cats">New Cat Picture</a>
+      <a href="../../cats/favs">Favorite Cats</a>
+      <a href="../../users/signup">Signup</a>
+      <a href="../../users/login">Login</a>
+    </nav>
+    <a href="/logout" class="logout">logout</a>
+    <h1>Everyday is Caturday</h1>
+    <h2>New Cat Picture</h2>
+    <div class="show-image-box">
+      <div class="show-image">
+          <img src={{url}} id="img" >
+      </div>
+    </div>
+
+    <div class="text-center" id="footer">
+      <button formmethod="post" formaction="/cats/new" id="fav-button">Save to Favorites</button>
+      <!-- <button><a href="/cats/">Add Cute Vote</a></button> -->
+      <button id="next-cat">See Next Cat</button>
+    </div>
+     </body>
+</html>
