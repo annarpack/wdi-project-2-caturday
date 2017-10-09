@@ -2,6 +2,7 @@
 const axios = require('axios');
 const db = require('../db/config');
 const cats = require('cat-ascii-faces');
+const Helpers = require('./helpers');
 
 // create the model object
 const Cats = {}
@@ -10,8 +11,6 @@ const Cats = {}
 const API_URL = 'http://thecatapi.com/api/images/';
 const API_KEY = process.env.API_KEY;
 
-let seriesNum = '';
-let seriesNums = [];
 
 Cats.fetchNew = (req, res, next) => {
   const apiUrl = `${API_URL}get?format=html&type=jpg`
@@ -28,81 +27,46 @@ Cats.fetchNew = (req, res, next) => {
 
 }
 //--------------------------------------------------------------
-// const getPosition = () => {
-//   let largestNum = 0;
-//   db.manyOrNone('SELECT * FROM favorites ORDER BY series').then(data => { 
-//     //console.log(`data inside get position: ${data}`);
-//     data.forEach(function(elm){
-//       if(elm.series > largestNum) {
-//         largestNum = elm.series;
-//         console.log(`largestNum inside getPosition: ${largestNum}`); 
-//        } //next();
-//     })
-//   })
-//   return largestNum;
-// }
-// const fakeFunc = () => {
-//   let fake = 11;
-//   return fake;
-// }
-// const movePosition = () => {
-//   let seriesArr = [];
-//   db.manyOrNone('SELECT * FROM favorites ORDER BY series').then(data => { 
-//     console.log(`data inside move position: ${data}`);
-//     data.forEach(function(elm){
-//       seriesArr.push(elm.series);
-//       console.log(`seriesArr inside movePosition: ${seriesArr}`); 
-//     })      
-//     console.log(`seriesArr inside movePosition: ${seriesArr}`); 
-//   });
-// } //end move position
-//--------------------------------------------------------------
 //--------------------------- Sep ---------------------
 //--------------------------------------------------------------
 //
 Cats.findAll = (req, res, next) => {
-  db.manyOrNone('SELECT * FROM favorites ORDER BY series').then(data => {       
+  const user_id = req.user.id;
+  console.log(`user_id in Cats.findAll: ${user_id}`);
+
+  db.manyOrNone('SELECT * FROM favorites WHERE user_id = $1 ORDER BY series_id', [user_id]).then(data => {
     res.locals.allCatsData = data;   
     next();   
   });
-  // const position = getPosition();
-  // console.log(`position in find all: ${position}`);
-  // const fake = fakeFunc();
-  // console.log(`fake in find all: ${fake}`);
-};
+};//end find all
 
-Cats.findById = (req, res, next) => {   
+Cats.findById = (req, res, next) => { 
+  const series_id = req.body.series_id;
+  const user_id = req.user.id;
   const catId = req.params.id;
-  console.log(`id: ${catId}`);   
-  db.one('SELECT * FROM favorites WHERE id=$1', [catId] // use the id here
+  console.log(`id in findById: ${catId}`);
+  db.one('SELECT * FROM favorites WHERE id=$1 AND user_id = $2', [catId, user_id] // use the id here
        ).then(data => {       
     res.locals.catData = data;       
     next();   
   });
-};
+}; // end find by id
 //
 // //--------------------------------------------------------------
 // //--------------------------- API ROUTES ---------------------
 // //--------------------------------------------------------------
 //
 Cats.create = (req, res, next) => { 
+  const user_id = req.user.id;
+  console.log(`user_id in Cats.create: ${user_id}`);
   const url = req.body.url;
-  console.log(`url: ${url}`);
-  if (seriesNum === undefined || seriesNum === '') {
-    seriesNum = 1;
-  } else {
-    seriesNum++;
-  }
-  // if(seriesNums.length === 0 ) { seriesNums.push(1) };
-  // if(seriesNums.lenght > 0) {
-  //   const n = seriesNums.length + 1;
-  //   seriesNum = n;
-  //   seriesNums.push(n);
-  // }
-  // console.log(`Series: ${seriesNum}`);
+  console.log(`url in Cats.create: ${url}`);
+  let series_id = Number(req.body.series_id);
+  console.log(`series_id in Cats.create: ${series_id}`);
    
-  db.one('INSERT INTO favorites (url, series) VALUES ($1, $2) returning id',     [url, seriesNum] ).then(data => {   
-    console.log('Data: ' + data.id);   
+  db.one('INSERT INTO favorites (url, series_id, user_id) VALUES ($1, $2, $3) returning id',
+  [url, series_id, user_id] ).then(data => {   
+    console.log('Data inside Cats.create: ' + data.id);   
     res.locals.newData = data;   
     next(); 
   });
@@ -112,8 +76,10 @@ Cats.create = (req, res, next) => { 
 Cats.update = (req, res, next) => { 
   const id = Number(req.body.id),
            url = req.body.url,
-           series = req.body.series; 
-  db.one('UPDATE favorites SET url = $1, series = $2 WHERE id = $3 returning id',     [url, series, id] ).then(data => {   
+          oldValue = req.body.oldValue,
+           series_id = Number(req.body.series); 
+  //movePosition(req.body.series_id);
+  db.one('UPDATE favorites SET url = $1, series_id = $2 WHERE id = $3 returning id',     [url, series_id, id] ).then(data => {   
     res.locals.editedData = data;   
     next(); 
   })
@@ -126,24 +92,17 @@ Cats.destroy = (req, res, next) => {   
   });
 }; // end cats delete
 
-//
-// //--------------------------------------------------------------
-// //--------------------------- Change Position ---------------------
-// //--------------------------------------------------------------
-//
+
+//--------------------------------------------------------------
+//--------------------------- get cat face ---------------------
+//--------------------------------------------------------------
+
 Cats.getCatFace = (req, res, next) => {   
   const face = cats();
   res.locals.face = face;
   next();
 }
-// Cats.changePosition = (req, res, next) => {
-//     db.manyOrNone(
-//           'SELECT * FROM favorites ORDER BY series'
-//       ).then(data => {
-//           res.locals.allCatsData = data;
-//           next();
-//       });
-// }
+
 
 //export the model
 module.exports = Cats;

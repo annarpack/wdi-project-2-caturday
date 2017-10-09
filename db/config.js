@@ -1,11 +1,11 @@
 const pgp = require('pg-promise')();
 
-const connectionSettings = {
+const cn = {
   host: 'localhost',
   port: 5432,
   database: 'caturday_db',
   user: 'annarpack'
 }
 
-const db = pgp(connectionSettings);
+const db = pgp(process.env.DATABASE_URL || cn);
 module.exports = db;

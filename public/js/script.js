@@ -12,7 +12,9 @@ $('button#edit-fav').each(function(elm){
 $('#fav-button').click(function(event){
   const src = $('#img').attr('src');
   //console.log(`SRC: ${src}`);
-  const sendData = {url: src};
+  let series_id = $(this).attr('data-id');
+  series_id++;
+  const sendData = {url: src, series_id: series_id};
   //console.log(`sendData: ${sendData.url}`);
   $.ajax({
       method: 'POST',
@@ -31,9 +33,10 @@ $('#edit-cat-form').on('submit', e => {
   e.preventDefault();
 
   const series = $('#edit-series-input').val(),
+        oldValue = $('#edit-oldvalue-input').val(),
         url = $('#edit-url-input').val(),
         id = $('#edit-id-input').val();
-  const editedCatData = {series: series, url: url, id: id};
+  const editedCatData = {series: series, oldValue: oldValue, url: url, id: id};
 
   $.ajax({
     method: 'PUT',
@@ -47,7 +50,7 @@ $('#edit-cat-form').on('submit', e => {
 })
 $('button#delete-fav').each(function(elm){
 $(this).click(function(e) {
-  const id = $(e.target).attr('data-id');
+  const id = $(e.currentTarget).attr('data-id');
   $.ajax(`/cats/favs/${id}`, {
     method: 'DELETE',
     success: data => {

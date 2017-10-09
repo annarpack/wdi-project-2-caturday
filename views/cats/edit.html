@@ -25,7 +25,8 @@
     <div>
       <form id="edit-cat-form" class="" action="../favs/edit/{{cat.id}}" method="put">
         <label for="">Position</label>
-        <input id="edit-series-input" type="number" name="series" value={{cat.series}}>
+        <input type="hidden" id="edit-oldvalue-input" value={{cat.series_id}}>
+        <input id="edit-series-input" type="number" name="series" value={{cat.series_id}}>
         <input type="hidden" id="edit-url-input" value="{{cat.url}}">
         <input type="hidden" id="edit-id-input" value={{cat.id}}>
         <input type="submit" name="Submit" >
