@@ -13,7 +13,7 @@
       <a href="../../../users/signup">Signup</a>
       <a href="../../../users/login">Login</a>
     </nav>
-    <a href="/logout" class="logout">logout</a>
+    <a href="../users/logout" class="logout">logout</a>
     <h1>Everyday is Caturday</h1>
     <h2>Edit Cat</h2>
     <div class="show-image-box">
@@ -26,7 +26,7 @@
       <form id="edit-cat-form" class="" action="../favs/edit/{{cat.id}}" method="put">
         <label for="">Position</label>
         <input type="hidden" id="edit-oldvalue-input" value={{cat.series_id}}>
-        <input id="edit-series-input" type="number" name="series" value={{cat.series_id}}>
+        <input id="edit-series-input" type="number" name="series" min="1" max={{position}} value={{cat.series_id}}>
         <input type="hidden" id="edit-url-input" value="{{cat.url}}">
         <input type="hidden" id="edit-id-input" value={{cat.id}}>
         <input type="submit" name="Submit" >

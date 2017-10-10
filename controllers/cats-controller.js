@@ -32,12 +32,15 @@ Helpers.getMaxPosition,
 // get obj by id
 router.get('/favs/edit/:id',
 auth.restrict,
+Helpers.getMaxPosition,
  Cats.findById,
   Cats.getCatFace,
 (req, res) => {
     res.render('cats/edit', {
-      cat: res.locals.catData });
+      cat: res.locals.catData,
+    position: res.locals.position });
 });
+
 
 //--------------------------------------------------------------
 //--------------------------- API ROUTES ---------------------

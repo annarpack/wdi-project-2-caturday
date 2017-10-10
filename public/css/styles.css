@@ -129,27 +129,23 @@ div#footer {
   border-radius: 50px;
   padding: 2em;
   display: block;
-  width: 640px;
-  height: 500px;
+  width: 720px;
+  height: 600px;
   margin-bottom: 2em;
 }
 .show-image {
   border-radius: 36px;
   overflow: hidden;
   border: 1px solid grey;
-  width: 640px;
-  height: 500px;
+  width: 720px;
+  height: 600px;
 }
 .show-image>img {
-  width: 800px;
-  max-width: 960px;
-  max-height: 960px;
+  width: 100%;
   height: auto;
-}
-.img-fav {
-  max-width: 500px;
+  max-width: 720px;
+  max-height: 680px;
   height: auto;
-  float: left;
 }
 
 /* ------------------------------------------------ */
@@ -169,12 +165,11 @@ div#footer {
 }
 .fav {
   margin: 0 auto;
-  width: 45%;
-  padding: 2%;
+  width: 50%;
   max-height: 400px;
   float: left;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 72px;
 }
 .fav:nth-child(2n+1) {
   clear: both;
@@ -184,18 +179,27 @@ div#footer {
   margin-top: 8px;
   display: inline-block;
   clear: both;
+  margin-bottom: 40px;
 }
 .fav>button:nth-child(1n+0) {
-  margin-left: 8%;
+  margin-left: 12%;
 }
 .fav>button:nth-child(2n) {
   margin-left: 22%;
 }
 .fav>.img-fav{
-  max-width: 400px;
-  max-height: 400px;
+  margin: 0 auto;
+  max-width: 440px;
+  max-height: 440px;
   overflow:hidden;
+  background-color: pink;
+  border-radius: 50px;
+  padding: 2em;
+  margin-top: 20px;
 }
 .fav>.img-fav>img {
-  max-width: 400px;
+  max-width: 440px;
+  border-radius: 36px;
+  overflow: hidden;
+  border: 1px solid grey;
 }
