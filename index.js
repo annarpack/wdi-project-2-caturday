@@ -46,7 +46,7 @@ const getCatFact = (req, res, next) => {   
 }
 // root route.
 app.get('/', getCatFact, (req, res) => {
-  res.render('index');
+  res.render('./pages/index');
 })
 
 

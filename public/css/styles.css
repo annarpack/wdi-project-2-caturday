@@ -5,27 +5,43 @@ body {
   height: 100vh;
   font-size: 16px;
   padding: 2em;
-  background-color: black;
-  --main-bg-color: black;
-  /*background-color: rgba(255, 182, 193, 0.65);*/
+  /*background-color: white;*/
+  --main-bg:   rgba(200, 233, 250, 1);
+  --header-bg: rgba(247, 209, 240, 1);
+  --content-bg: rgba(255, 255, 255, 1);
+  background-color: var(--main-bg);
   font-family: 'Lato', sans-serif;
 }
+
+/* ------------------------------------------------ */
+/* Header */
+/* ------------------------------------------------ */
+header {
+  margin: 0 auto;
+    background-color: var(--header-bg);
+    height: 10vh;
+}
 .container {
-  width: 80%;
+  margin: 0 auto;
+  width: 60%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+
+  background-color: var(--content-bg);
+}
+.content {
+
 }
 /* ------------------------------------------------ */
 /*Navigation*/
 /* ------------------------------------------------ */
 nav {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
+  rgba(247, 209, 240, 0.6)
   font-size: 22px;
   margin: 0 auto;
-  padding: 12px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: center;
-    border-radius: 15px;
 }
 nav>a {
   padding: 6px 12px;
