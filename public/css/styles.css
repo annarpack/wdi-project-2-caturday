@@ -1,19 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 body {
   margin: 0 auto;
-  width: 80vw;
+  width: 100vw;
   height: 100vh;
   font-size: 16px;
   padding: 2em;
+  background-color: black;
+  --main-bg-color: black;
   /*background-color: rgba(255, 182, 193, 0.65);*/
   font-family: 'Lato', sans-serif;
+}
+.container {
+  width: 80%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 /* ------------------------------------------------ */
 /*Navigation*/
 /* ------------------------------------------------ */
 nav {
   width: 100%;
-  background-color: purple;
+  background-color: rgba(255, 255, 255, 0.6);
   font-size: 22px;
   margin: 0 auto;
   padding: 12px;
@@ -22,7 +29,7 @@ nav {
 }
 nav>a {
   padding: 6px 12px;
-  color: pink;
+  color: white;
 }
 /* ------------------------------------------------ */
 /*Typography*/

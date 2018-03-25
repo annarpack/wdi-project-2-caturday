@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // view setup.
 app.engine('html', mustacheExpress());
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 // asset setup.

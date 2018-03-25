@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "engines": {
-  "node": "6.11.2"
+    "node": "6.11.2"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "cat-facts": "^1.0.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
     "env": "0.0.2",
     "express": "^4.16.1",
     "express-session": "^1.15.6",

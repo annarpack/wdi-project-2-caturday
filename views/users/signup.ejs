@@ -1,0 +1,16 @@
+<div class="text-center">
+   <h1 class="text-center">Everyday is Caturday</h1>
+   <h2>Signup</h2>
+  <form action="/users" method="POST">
+    <label for="email">EMAIL</label><br />
+    <input id="email" type="text" name="user[email]" placeholder="email"><br>
+
+    <label for="password">PASSWORD</label><br />
+    <input id="password" type="password" name="user[password]" placeholder="password"><br>
+
+    <input type="submit" value="Sign Up">
+  </form>
+</div>
+<div class="text-center" id="footer">
+  <div id="cat-face">{{face}}</div>
+</div>
